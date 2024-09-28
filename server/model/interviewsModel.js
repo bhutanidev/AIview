@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const interviewSchema = mongoose.Schema({
     interviewName : {type:String,trim:true},
-    userId:[{type:mongoose.Schema.Types.ObjectId,ref:'User'}],
+    userId:{type:String,unique:true},
     questions : [{type:String}],
     answer : [{type:String}],
     feedback:[{type:String}],

@@ -4,18 +4,24 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Sidebar from './pages/Sidebar'
 import Navbar from './components/Navbar'
+import axios from 'axios'
+import LandingPage from './pages/LandingPage'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
+  
   return (
+
     <>
+    <LandingPage/>
     {/* <Login/> */}
     {/* <Register/> */}
     {/* <div className=' h-screen'> */}
     {/* <Navbar/> */}
-    <Sidebar/>
+    {/* <Sidebar/> */}
     {/* </div> */}
+    {/* <button className="btn btn-wide" onClick={callfetch}>Test</button> */}
     </>
   )
 }

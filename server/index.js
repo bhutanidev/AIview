@@ -2,6 +2,20 @@ const express = require("express")
 const app = express()
 const dotenv = require('dotenv').config()
 const mongoose = require('mongoose')
+const cors = require('cors')
+const {generateQuestions} = require("./controller/interviewController")
+
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+
+app.use(
+  cors({
+    origin:'http://localhost:5173',
+    credentials:true
+  })
+)
+  
+
 
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>{

@@ -1,5 +1,5 @@
-import React from 'react'
-
+import {React,useState} from 'react'
+//no need for register 
 const Register = () => {
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
