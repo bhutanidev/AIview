@@ -13,7 +13,7 @@ createRoot(document.getElementById('root')).render(
     clientId={import.meta.env.VITE_AUTHO_CLIENTID}
     authorizationParams={{
       redirect_uri: window.location.origin || "http://localhost:5173",
-      audience : "AIviewuniqueIdentifier",
+      audience : import.meta.env.VITE_AUDIENCE,
     }}
   >
     <App />
