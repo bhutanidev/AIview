@@ -6,7 +6,6 @@ const interviewSchema = mongoose.Schema({
     questions : [{type:String}],
     answer : [{type:String}],
     feedback:[{type:String}],
-    sampleanswer:[{type:String}]
 },{Timestamp:true})
 
 const Interview = mongoose.model('Interview',interviewSchema)
