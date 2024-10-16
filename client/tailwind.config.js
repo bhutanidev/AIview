@@ -6,12 +6,14 @@ export default {
   ],
   theme: {
     extend: {},
+    
   },
   plugins: [
     require('daisyui'),
   ],
   daisyui:{
-    themes:["emerald"]
+    themes:["pastel",
+    ]
   }
 }
 

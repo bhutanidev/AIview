@@ -2,19 +2,40 @@ import { useState } from 'react'
 import './App.css'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import Sidebar from './pages/Sidebar'
+import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
 import axios from 'axios'
 import LandingPage from './pages/LandingPage'
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Routes } from 'react-router-dom'
+import UserPage from './pages/UserPage'
 
 function App() {
-  
+
+  const route = createBrowserRouter(
+
+    createRoutesFromElements(
+      <>
+      <Route path='/' element={<LandingPage/>}></Route>
+      <Route path='user' element={<UserPage/>}>
+        <Route path='' element={<>DASHBOARD</>}/>
+        <Route path='setting' element={<>settings</>}/>
+        <Route path='pricing' element={<>pricing</>}/>
+        <Route path='bookmarks' element={<>Bookmarks</>}/>
+
+      </Route>
+      </>
+
+    )
+
+  )
 
   
   return (
 
     <>
-    <LandingPage/>
+    <RouterProvider router={route}>
+
+
     {/* <Login/> */}
     {/* <Register/> */}
     {/* <div className=' h-screen'> */}
@@ -22,6 +43,7 @@ function App() {
     {/* <Sidebar/> */}
     {/* </div> */}
     {/* <button className="btn btn-wide" onClick={callfetch}>Test</button> */}
+    </RouterProvider>
     </>
   )
 }

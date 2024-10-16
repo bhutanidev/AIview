@@ -3,10 +3,16 @@ const express = require("express")
 const interviewRouter = express.Router();
 
 const { jwtCheck , userAttatch} = require('../middleware/authMiddlewares')
-const {generateQuestions,evaluateQuestions} = require("../controller/interviewController")
+const {generateQuestions,evaluateQuestions, getAllInterviewHeading,saveInterview} = require("../controller/interviewController")
 
-interviewRouter.use(jwtCheck,userAttatch).get('/generateQues',generateQuestions(req,res))
-interviewRouter.use(jwtCheck,userAttatch).get('/evaluate',evaluateQuestions(req,res))
+// interviewRouter.use(jwtCheck,userAttatch).get('/generateQues',generateQuestions)
+interviewRouter.get('/generateQues',generateQuestions)
+
+interviewRouter.use(jwtCheck,userAttatch).get('/evaluate',evaluateQuestions)
+interviewRouter.use(jwtCheck).get('/getAllInterview',getAllInterviewHeading)
+interviewRouter.use(jwtCheck).post('/saveInterview',saveInterview)
+
+
 
 module.exports={
     interviewRouter

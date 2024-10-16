@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const interviewSchema = mongoose.Schema({
     interviewName : {type:String,trim:true},
-    userId:{type:String,unique:true},
+    userId:{type:String},
+    bookmark:{type:Boolean,default:false},
     questions : [{type:String}],
     answer : [{type:String}],
     feedback:[{type:String}],
