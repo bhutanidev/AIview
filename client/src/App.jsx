@@ -8,6 +8,7 @@ import axios from 'axios'
 import LandingPage from './pages/LandingPage'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Routes } from 'react-router-dom'
 import UserPage from './pages/UserPage'
+import Dashboard from './components/Dashboard'
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
       <>
       <Route path='/' element={<LandingPage/>}></Route>
       <Route path='user' element={<UserPage/>}>
-        <Route path='' element={<>DASHBOARD</>}/>
+        <Route path='' element={<Dashboard/>}/>
         <Route path='setting' element={<>settings</>}/>
         <Route path='pricing' element={<>pricing</>}/>
         <Route path='bookmarks' element={<>Bookmarks</>}/>

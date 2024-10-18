@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    overflow: hidden;   /* Prevent unwanted overflow issues */
+    overflow-y: scroll;            /* Enable vertical scrolling */
+    scrollbar-width: none;         /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none;      /* Hide scrollbar in IE and Edge */
+  }
+  
+  *::-webkit-scrollbar {
+    display: none;                 /* Hide scrollbar in Chrome, Safari, Opera */
+  }

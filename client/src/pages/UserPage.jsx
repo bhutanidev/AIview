@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
-import { LayoutDashboard } from 'lucide-react'
+import { Bookmark, CircleDollarSign, LayoutDashboard, LogOut, Settings } from 'lucide-react'
 import LogoutButton from '../components/LogoutButton'
 import { useAuth0 } from '@auth0/auth0-react'
 import { TokenContext } from '../../context/tokenContext'
@@ -13,7 +13,7 @@ const UserPage = () => {
 
   const {token,setToken} = useContext(TokenContext)
   const navigate = useNavigate()
-  const {user,getAccessTokenSilently,isAuthenticated,loginWithRedirect,isLoading} = useAuth0()
+  const {user,getAccessTokenSilently,isAuthenticated,loginWithRedirect,isLoading,logout} = useAuth0()
   
   
   useEffect(()=>{
@@ -53,12 +53,12 @@ const UserPage = () => {
   
 <div className=' flex flex-col gap-3'>
   <li className=' flex'>  <NavLink to={''} end> <LayoutDashboard/> Dashboard</NavLink></li>
-  <li className=' flex'>  <NavLink to={'bookmarks'}> <LayoutDashboard/> Bookmarks</NavLink></li>
-  <li className=' flex'>  <NavLink to={'pricing'}> <LayoutDashboard/> Pricing</NavLink></li>
+  <li className=' flex'>  <NavLink to={'bookmarks'}> <Bookmark /> Bookmarks</NavLink></li>
+  <li className=' flex'>  <NavLink to={'pricing'}> <CircleDollarSign /> Pricing</NavLink></li>
 </div>
 <div className=' flex flex-col gap-2'>
-  <li className=' flex'>  <NavLink to={'setting'}> <LayoutDashboard/> Settings</NavLink></li>
-  <li className=' flex'>  <NavLink to={'setting'}> <LayoutDashboard/> Logout</NavLink></li>
+  <li className=' flex'>  <NavLink to={'setting'}> <Settings /> Settings</NavLink></li>
+  <li className=' flex' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>  <NavLink to={window.location.origin} > <LogOut /> Logout</NavLink></li>
 
 </div>
 
