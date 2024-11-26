@@ -1,6 +1,7 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { GoogleGenerativeAI , SchemaType } = require("@google/generative-ai");
 const Interview = require("../model/interviewsModel")
 const mongoose = require('mongoose')
+const crypto = require('crypto');
 
 // Make sure to include these imports:
 // import { GoogleGenerativeAI } from "@google/generative-ai";
@@ -24,6 +25,7 @@ const generateQuestions = async(req,res)=>{
         }
     }
     const {prompt} = req.body //"take a mock interview for frontend engineer intern applying as a fresher using techstacks as react and next . Also ask some theoritical questions on dsa . only ask 5 questions.provide only the questions in json format and nothing else"
+    // console.log(prompt);
     
     const model =genAI.getGenerativeModel({
         model: "gemini-1.5-flash",
@@ -43,8 +45,12 @@ const generateQuestions = async(req,res)=>{
     
     // const questions = JSON.parse(str)
     const result = await model.generateContent(prompt);
-
-    return res.send(result.response.text());
+    const Interid = crypto.randomBytes(16).toString('hex')
+    // console.log(result.response.text())
+    console.log(typeof(result.response.text()));
+    
+    
+    return res.json({Interid,questions:result.response.text()});
     
 }
 

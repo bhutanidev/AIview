@@ -26,7 +26,7 @@ export const TokenProvider = ({ children }) => {
       fetchUser();
     }, []);
     return (
-      <TokenContext.Provider value={{ token , setToken }}>
+      <TokenContext.Provider value={ {token , setToken} }>
         {children}
       </TokenContext.Provider>
     );

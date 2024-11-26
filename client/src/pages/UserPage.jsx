@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar'
 import { Bookmark, CircleDollarSign, LayoutDashboard, LogOut, Settings } from 'lucide-react'
 import LogoutButton from '../components/LogoutButton'
 import { useAuth0 } from '@auth0/auth0-react'
-import { TokenContext } from '../../context/tokenContext'
+import { TokenContext } from '../context/tokenContext'
 import Notauth from '../components/Notauth'
 
 

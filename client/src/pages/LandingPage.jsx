@@ -5,7 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import LoginButton from '../components/LoginButton'
 import { LogOut } from 'lucide-react'
 import LogoutButton from '../components/LogoutButton'
-import { TokenContext } from '../../context/tokenContext'
+import { TokenContext } from '../context/tokenContext'
 
 
 const LandingPage = () => {

@@ -1,13 +1,42 @@
+import { useAuth0 } from '@auth0/auth0-react'
+import axios from 'axios'
 import { Plus } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { TokenContext } from '../context/tokenContext'
+import { InterviewContext } from '../context/InterviewContext'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
     const[name,setName]=useState(null)
     const [description,setDescription]=useState(null)
+    const {token,setToken} = useContext(TokenContext)
+    const {setQuestions,setId} = useContext(InterviewContext)
+    const {getAccessTokenSilently} = useAuth0()
+    const navigate = useNavigate()
     const handleSubmit = async(e)=>{
         e.preventDefault()
-        console.log(name)
-        console.log(description)
+        const temptoken = await getAccessTokenSilently()
+        console.log(temptoken)
+        
+        setToken(temptoken)
+        const prompt = `take a mock interview for ${name} generate an array of interview questions that align with the key responsibilities and requirements of the job . Job description , important subjects are as follows : ${description}`
+        const response = await axios.post('/generateQues',
+            {prompt},
+            {
+                // body:{prompt:prompt},
+                headers:{
+                    'authorization': `Bearer ${token}`
+                },
+            },
+        )
+        const {questions} = response.data
+        // questions.replace('['," ")
+        // questions.replace(']'," ")
+        const newques = JSON.parse(questions)
+        setQuestions(newques)
+        setId(response.data.Interid)
+        navigate('/live')
+        
     }
   return (
     <>

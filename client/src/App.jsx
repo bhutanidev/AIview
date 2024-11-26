@@ -9,6 +9,8 @@ import LandingPage from './pages/LandingPage'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Routes } from 'react-router-dom'
 import UserPage from './pages/UserPage'
 import Dashboard from './components/Dashboard'
+import Instruction from './pages/Instruction'
+
 
 function App() {
 
@@ -24,6 +26,8 @@ function App() {
         <Route path='bookmarks' element={<>Bookmarks</>}/>
 
       </Route>
+      <Route path='live' element={<Instruction/>}/>
+
       </>
 
     )
